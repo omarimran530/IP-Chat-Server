@@ -5,7 +5,6 @@
 //  Created by Omar Imran on 11/12/23.
 //
 
-#include "TCP Client.hpp"
 #include <iostream>
 #include <sys/socket.h>
 #include <arpa/inet.h>
@@ -13,7 +12,7 @@
 #include <cstring>
 
 int main() {
-    int sock = 0 // Socket descriptor for client
+    int sock = 0; // Socket descriptor for client
     struct sockaddr_in serv_addr; // Structure to hold the server address
     const char *message = "Hello from client"; // Message to send to server
     char buffer[1024] = {0}; // Buffer to store message from server

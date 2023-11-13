@@ -5,10 +5,9 @@
 //  Created by Omar Imran on 11/12/23.
 //
 
-#include "TCP Server.hpp"
 #include <iostream>
 #include <sys/socket.h>
-#inlcude <netinet/in.h>
+#include <netinet/in.h>
 #include <unistd.h>
 #include <cstring>
 
@@ -16,12 +15,12 @@ int main() {
     int server_fd, new_socket; // Socket file descriptors for the server and the new client
     struct sockaddr_in address; // Structure to hold server address information
     int opt = 1; // Option for setsockopt
-    int addrlen = sizeof(adderss); // Length of address structure
+    int addrlen = sizeof(address); // Length of address structure
     char buffer[1024] = {0}; // Buffer to store the message from client
     const char *message = "Hello from server"; // Message to send to client
     
     // Socket file descriptor
-    if ((server_fd = socket(AF_INET, SPCK_STREAM, 0)) == 0) {
+    if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
         perror("socket failed");
         exit(EXIT_FAILURE);
     }
@@ -49,7 +48,7 @@ int main() {
     }
     
     // Accept an incoming connection
-    if ((new_socket = accept(server_fd, (struct sockaddr *) &adderss, (socklen_t*) &addrelen)) < 0) {
+    if ((new_socket = accept(server_fd, (struct sockaddr *) &address, (socklen_t*) &addrlen)) < 0) {
         perror("accept");
         exit(EXIT_FAILURE);
     }
